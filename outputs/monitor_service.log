@@ -1,0 +1,34 @@
+2026-11-19 20:56:28,156 INFO monitor_service Monitoring check started (live-test) for Lakki Marwat, Charsadda, Nowshera, Swat, Peshawar
+2026-11-19 20:56:38,021 INFO monitor_service   5% Lakki Marwat: searching new Sentinel-1 acquisitions
+2026-11-19 20:57:05,722 INFO monitor_service  14% Charsadda: searching new Sentinel-1 acquisitions
+2026-11-19 20:57:16,452 INFO monitor_service  23% Nowshera: searching new Sentinel-1 acquisitions
+2026-11-19 20:57:34,167 INFO monitor_service  32% Swat: searching new Sentinel-1 acquisitions
+2026-11-19 20:58:06,265 INFO monitor_service  41% Peshawar: searching new Sentinel-1 acquisitions
+2026-11-19 20:58:22,418 INFO monitor_service  55% Lakki Marwat: assessing candidate event of 2026-10-10
+2026-11-19 20:59:31,272 INFO monitor_service 100% Monitoring check finished
+2026-11-19 20:59:31,277 INFO monitor_service Monitoring check finished: success – 128 new acquisition(s); 1 new and 0 updated event(s); 0 alert(s)
+2026-11-19 21:10:46,444 INFO monitor_service Monitoring check started (duplicate-test) for Lakki Marwat, Charsadda, Nowshera, Swat, Peshawar
+2026-11-19 21:11:44,082 INFO monitor_service   5% Lakki Marwat: searching new Sentinel-1 acquisitions
+2026-11-19 21:11:45,660 INFO monitor_service  14% Charsadda: searching new Sentinel-1 acquisitions
+2026-11-19 21:11:53,568 INFO monitor_service  23% Nowshera: searching new Sentinel-1 acquisitions
+2026-11-19 21:11:54,609 INFO monitor_service  32% Swat: searching new Sentinel-1 acquisitions
+2026-11-19 21:11:55,598 INFO monitor_service  41% Peshawar: searching new Sentinel-1 acquisitions
+2026-11-19 21:11:57,037 INFO monitor_service 100% Monitoring check finished
+2026-11-19 21:11:57,037 INFO monitor_service Monitoring check finished: success – 0 new acquisition(s); 0 new and 0 updated event(s); 0 alert(s)
+2026-11-19 21:13:16,558 INFO apscheduler.scheduler Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-11-19 21:13:16,567 INFO apscheduler.scheduler Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-11-19 21:13:16,582 INFO monitor_service Monitoring service started (pid 9580, every 12.0 h). First check at 2026-11-20T04:11:56 UTC.
+2026-11-19 21:13:16,591 INFO apscheduler.scheduler Added job "main.<locals>.scheduled_check" to job store "default"
+2026-11-19 21:13:16,591 INFO apscheduler.scheduler Added job "main.<locals>.heartbeat" to job store "default"
+2026-11-19 21:13:16,591 INFO apscheduler.scheduler Scheduler started
+2026-11-19 21:13:16,593 INFO apscheduler.executors.default Running job "main.<locals>.heartbeat (trigger: interval[0:02:00], next run at: 2026-11-19 16:13:16 UTC)" (scheduled at 2026-11-19 16:13:16.567077+00:00)
+2026-11-19 21:13:16,609 INFO apscheduler.executors.default Job "main.<locals>.heartbeat (trigger: interval[0:02:00], next run at: 2026-11-19 21:15:16 PKT)" executed successfully
+2026-11-19 21:23:04,809 INFO monitor_service Monitoring check started (initial-setup) for Lakki Marwat, Charsadda, Nowshera, Swat, Peshawar
+2026-11-19 21:23:17,463 INFO monitor_service   5% Lakki Marwat: searching new Sentinel-1 acquisitions
+2026-11-19 21:23:34,451 INFO monitor_service  14% Charsadda: searching new Sentinel-1 acquisitions
+2026-11-19 21:23:46,105 INFO monitor_service  23% Nowshera: searching new Sentinel-1 acquisitions
+2026-11-19 21:23:57,627 INFO monitor_service  32% Swat: searching new Sentinel-1 acquisitions
+2026-11-19 21:24:10,953 INFO monitor_service  41% Peshawar: searching new Sentinel-1 acquisitions
+2026-11-19 21:24:18,952 INFO monitor_service  55% Lakki Marwat: assessing candidate event of 2026-10-10
+2026-11-19 21:25:10,009 INFO monitor_service 100% Monitoring check finished
+2026-11-19 21:25:10,009 INFO monitor_service Monitoring check finished: success – 128 new acquisition(s); 1 new and 0 updated event(s); 0 alert(s)
