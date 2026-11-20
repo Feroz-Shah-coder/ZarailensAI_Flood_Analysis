@@ -3,7 +3,7 @@ __pycache__/
 .pytest_cache/
 .git/
 .env
-.streamlit/secrets.toml
+
 outputs/zarailens.log
 data/analysis_history.sqlite3
 data/processed/cache/
@@ -11,3 +11,4 @@ tests/
 web/
 vercel.json
 render.yaml
+webapp/node_modules/

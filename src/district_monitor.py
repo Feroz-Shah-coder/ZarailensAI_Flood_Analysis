@@ -152,7 +152,8 @@ def _send_webhook(url: str, message: str) -> None:
         log.warning("Alert webhook failed: %s",exc)
 
 def run_monitor_check(cfg, project=None, trigger: str = "scheduler", path=None,
-                      progress: Progress = _noop, today: date | None = None) -> dict:
+                      progress: Progress = _noop, today: date | None = None,
+                      districts: list[str] | None = None) -> dict:
     """One monitoring check for all configured districts. Safe to call concurrently (DB lock)."""
     from src.flood_monitoring import screen_kpk, assess_event, analyze_event, _chirps_last
     from src.ee_auth import initialize
@@ -167,7 +168,7 @@ def run_monitor_check(cfg, project=None, trigger: str = "scheduler", path=None,
     try:
         initialize(project)
         state=store.get_monitor_state(path)
-        districts=list(cfg.monitored_districts)
+        districts=list(districts or cfg.monitored_districts)
         # 1–2: measure new acquisitions per district
         for i,district in enumerate(districts):
             progress(0.05+0.45*i/len(districts),f"{district}: searching new Sentinel-1 acquisitions")

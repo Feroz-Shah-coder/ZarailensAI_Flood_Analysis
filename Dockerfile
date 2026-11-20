@@ -1,12 +1,12 @@
-# ZarailensAI web app container (Google Cloud Run, Render, Railway, any Docker host).
+# ZarailensAI web app container (optional; Vercel does not need it). Any Docker host: Cloud Run, Render, Railway…
 FROM python:3.12-slim
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY . .
-# Hosts such as Cloud Run/Render inject $PORT; 8501 is Streamlit's default.
-ENV PORT=8501
-EXPOSE 8501
-HEALTHCHECK CMD python -c "import urllib.request,os;urllib.request.urlopen(f'http://localhost:{os.environ.get(\"PORT\",\"8501\")}/_stcore/health')"
-CMD streamlit run app.py --server.port=${PORT} --server.address=0.0.0.0 --server.headless=true --browser.gatherUsageStats=false
+ENV PORT=8000
+EXPOSE 8000
+HEALTHCHECK CMD python -c "import urllib.request,os;urllib.request.urlopen(f'http://localhost:{os.environ.get(\"PORT\",\"8000\")}/api/health')"
+# Long Earth Engine steps can take a few minutes: generous keep-alive / timeouts.
+CMD uvicorn app:app --host 0.0.0.0 --port ${PORT} --timeout-keep-alive 75

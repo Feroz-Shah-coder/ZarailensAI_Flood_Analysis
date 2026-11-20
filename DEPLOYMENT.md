@@ -1,84 +1,76 @@
-# Deploying ZarailensAI (Vercel + Python host)
+# Deploying ZarailensAI on Vercel
 
-ZarailensAI is a Streamlit (Python) app. Streamlit keeps a live WebSocket open to every
-browser and runs Earth Engine analyses that take minutes, which Vercel's serverless
-functions cannot do. The deployment therefore has two parts:
+ZarailensAI is a FastAPI app. Vercel's Python runtime finds the `app` object in `app.py` and serves the whole
+site — web pages and API — from it. No build step and no Node.js are needed.
 
-| Part | Where | What it does |
-|---|---|---|
-| **Website** (`web/`, `vercel.json`) | **Vercel** | Public ZarailensAI site; shows the app full-screen and has an "Open full app" button |
-| **App** (`app.py`, `Dockerfile`, `render.yaml`) | **Render** *or* **Streamlit Community Cloud** | Runs the Python app and talks to Google Earth Engine |
+## 1. Earth Engine service account (once)
 
-## 1. Put the project on GitHub
+A server cannot use your personal `earthengine authenticate` login.
 
-```bash
-git init
-git add .
-git commit -m "ZarailensAI"
-git remote add origin https://github.com/<you>/zarailensai.git
-git push -u origin main
+1. Google Cloud Console → your Earth Engine project → **IAM & Admin → Service accounts → Create**.
+2. Give it the roles **Earth Engine Resource Viewer** and **Service Usage Consumer**, and register it for Earth Engine
+   (Earth Engine project settings / https://signup.earthengine.google.com/#!/service_accounts).
+3. **Keys → Add key → JSON**. Keep this file private; you paste its whole content into Vercel below.
+
+## 2. Push to GitHub
+
+```powershell
+git add -A
+git commit -m "ZarailensAI web app for Vercel"
+git push
 ```
 
-`.gitignore` keeps `.env`, `.streamlit/secrets.toml`, service-account keys, `.venv` and the local
-database out of the repository. Computed flood-event results travel in
-`data/reference/catalog_results.json.gz` and the card pictures in `data/catalog_thumbs/`;
-a fresh server imports them on first start.
+`.gitignore` keeps `.env`, keys, `.venv` and the local database out of the repository. Computed results travel in
+`data/reference/catalog_results.json.gz` and card pictures in `data/catalog_thumbs/`; refresh them before pushing:
+`python -c "from src.flood_catalog import export_seed; print(export_seed())"`.
 
-## 2. Earth Engine service account (needed by any host)
+## 3. Create the Vercel project
 
-1. Google Cloud Console → your Earth Engine project → IAM & Admin → Service accounts → *Create*.
-2. Grant it the **Earth Engine Resource Viewer** role (and *Service Usage Consumer*),
-   then register it for Earth Engine at https://signup.earthengine.google.com/#!/service_accounts
-   (or in the Earth Engine project settings).
-3. Keys → *Add key* → JSON. Keep this file private; you paste its whole content as a secret below.
+1. https://vercel.com/new → import the GitHub repository.
+2. **Framework Preset:** FastAPI (or *Other*). **Root Directory:** the repository root (leave empty).
+   Build and install commands: leave the defaults (Vercel installs `requirements.txt`).
+3. **Environment Variables:**
 
-## 3a. App on Render (Docker, recommended)
+   | Name | Value |
+   |---|---|
+   | `EE_PROJECT` | your Google Cloud project id |
+   | `EE_SERVICE_ACCOUNT_JSON` | the whole JSON key file content |
+   | `ADMIN_TOKEN` | *(recommended)* a password; visitors can view, but running analyses and saving data need it (enter it in the sidebar) |
+   | `CRON_SECRET` | *(recommended)* a random string; protects the scheduled monitoring endpoint |
 
-1. https://dashboard.render.com → **New → Blueprint** → choose the GitHub repo (it reads `render.yaml`).
-2. Set the secrets:
-   * `EE_PROJECT` = your Google Cloud project id
-   * `EE_SERVICE_ACCOUNT_JSON` = the whole JSON key file content
-3. Deploy. The app is at `https://zarailensai-app.onrender.com` (name may differ).
+4. **Deploy.** The site is at `https://<project>.vercel.app`.
 
-The free plan sleeps after ~15 min idle (first visit then takes about a minute) and its disk
-is temporary: new analyses and field notes are lost on redeploy. For permanent storage add a
-Render disk mounted at `/app/data/db` and set `ANALYSIS_HISTORY_DB=/app/data/db/analysis_history.sqlite3`.
+## 4. Keep new results (recommended)
 
-## 3b. App on Streamlit Community Cloud (alternative, free)
+Vercel functions can only write to a temporary folder, so analyses run on the site would be lost when the instance
+stops. Connect a free Redis store and ZarailensAI saves its database there automatically:
 
-1. https://share.streamlit.io → *Create app* → repo, branch `main`, main file `app.py`,
-   Advanced settings → Python 3.12.
-2. Secrets: paste the content of `.streamlit/secrets.toml.example` with your real values.
-3. The app is at `https://<name>.streamlit.app`.
+Vercel project → **Storage → Create / Connect → Upstash for Redis** (free plan) → connect to this project.
+This adds `KV_REST_API_URL` and `KV_REST_API_TOKEN`; redeploy. The sidebar then shows *Storage: durable (Upstash Redis)*.
 
-## 4. Website on Vercel
+Without it the shipped results (reported events, latest dashboard run) are always available, but new runs, saved
+analyses and field observations are temporary.
 
-1. https://vercel.com/new → import the same GitHub repo.
-   **Root Directory → `web`** (click *Edit* next to it). Framework Preset → *Other*.
-   This keeps `app.py` / `requirements.txt` out of Vercel's view; otherwise Vercel tries to run
-   the Streamlit app as a Python function and fails with `PYTHON_ENTRYPOINT_NOT_FOUND`.
-   (`web/vercel.json` sets the build `node build.mjs` → `dist`. If you leave the root as the repo
-   root, `.vercelignore` and the root `vercel.json` do the same job.)
-2. Settings → Environment Variables:
-   * `ZARAILENS_APP_URL` = the app address from step 3 (e.g. `https://zarailensai-app.onrender.com`)
-3. Deploy. Your site is `https://<project>.vercel.app`; a custom domain can be added in Vercel.
+## 5. Scheduled monitoring
 
-If `ZARAILENS_APP_URL` is missing the site shows setup instructions instead of the app.
-Changing it needs a redeploy (Deployments → ⋯ → Redeploy).
+`vercel.json` registers a **Vercel Cron** job calling `/api/cron/monitor` once a day (05:00 UTC) — the Hobby plan
+allows daily jobs. On the Pro plan you can change the schedule to every 12 hours: `"schedule": "0 */12 * * *"`.
+Each run checks the monitored districts with the oldest last check first, inside the function time limit.
+The *Run check now* button on the Automatic Flood Monitoring page works at any time.
 
-CLI alternative: `npm i -g vercel`, then `vercel` (preview) and `vercel --prod` in the project folder.
+## Limits to know
 
-## 5. Automatic monitoring service (optional)
+* **Function time:** each step is designed to finish within Vercel's 300-second limit; the slowest steps
+  (verification and full event analysis) normally take 1–3 minutes. If Earth Engine is very busy a step can time out —
+  press the button again.
+* **Long jobs run from the browser:** a dashboard refresh or a Sentinel-era analysis is a chain of requests, so keep
+  the page open until it finishes (2–15 minutes).
+* **Function size:** dependencies are kept small (about 150 MB). `google-api-python-client` is pinned to 1.12.11,
+  which works with Earth Engine and avoids ~110 MB of unused discovery files.
+* **Quota:** all visitors share one Earth Engine project quota. Set `ADMIN_TOKEN` on a public site.
 
-`monitor_service.py` (12-hourly checks) is a separate long-running process. On Render add a
-**Background Worker** with the same Docker image and start command
-`python monitor_service.py` (paid plan; it must share the database disk with the app), or keep
-running it on your own computer.
+## Run the same app elsewhere (optional)
 
-## Local check before deploying
-
-```bash
-streamlit run app.py                                   # the app
-ZARAILENS_APP_URL=http://localhost:8501 node web/build.mjs
-python -m http.server 8080 --directory web/dist        # the Vercel site → http://localhost:8080
-```
+* Locally: `python app.py` → http://localhost:8000
+* Docker (Cloud Run, Render, Railway, VPS): `docker build -t zarailensai .` then
+  `docker run -p 8000:8000 -e EE_PROJECT=… -e EE_SERVICE_ACCOUNT_JSON="$(Get-Content key.json -Raw)" zarailensai`

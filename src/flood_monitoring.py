@@ -121,7 +121,8 @@ def _slice_keys(ee, region, start: date, end: date) -> list[tuple[str,int,str]]:
 # ---------------------------------------------------------------- screening
 def screen_kpk(start: date, end: date, background_start: date, cfg, project=None,
                progress: Progress = _noop, workers: int = 3,
-               district_names: list[str] | None = None, skip_keys: set | None = None) -> dict:
+               district_names: list[str] | None = None, skip_keys: set | None = None,
+               keys: list | None = None) -> dict:
     """Measure new water per district for every Sentinel-1 slice from background_start to end.
 
     ``district_names`` limits the search to those districts (automatic 5-district
@@ -132,7 +133,8 @@ def screen_kpk(start: date, end: date, background_start: date, cfg, project=None
     districts=kpk_districts(ee)
     if district_names: districts=districts.filter(ee.Filter.inList('GAUL2_NAME',list(district_names)))
     region=districts.geometry()
-    keys=[k for k in _slice_keys(ee,region,background_start,end) if not skip_keys or k not in skip_keys]
+    keys=[tuple(k) for k in keys] if keys is not None else _slice_keys(ee,region,background_start,end)
+    keys=[k for k in keys if not skip_keys or k not in skip_keys]
     if not keys:
         return {"rows":[],"slices":0,"monitoring_slices":0,"errors":[]}
     base=(ee.ImageCollection(S1_COLLECTION).filterBounds(region).filter(ee.Filter.eq('instrumentMode','IW'))

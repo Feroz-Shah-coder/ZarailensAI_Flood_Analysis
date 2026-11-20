@@ -1,8 +1,12 @@
 """Application configuration and validated defaults."""
+import os
 from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 ROOT = Path(__file__).resolve().parents[1]
+# On Vercel only /tmp is writable; the database is seeded there (and optionally synced to Upstash Redis).
+ON_VERCEL = bool(os.getenv("VERCEL"))
+WRITABLE = Path("/tmp/zarailens") if ON_VERCEL else ROOT / "data"
 
 class Settings(BaseSettings):
     app_name: str = "ZarailensAI"
@@ -11,7 +15,7 @@ class Settings(BaseSettings):
     max_aoi_km2: float = 5000
     max_download_pixels: int = 2_000_000
     coverage_threshold: float = 90
-    analysis_history_db: Path = ROOT / "data" / "analysis_history.sqlite3"
+    analysis_history_db: Path = WRITABLE / "analysis_history.sqlite3"
     boundaries_dir: Path = ROOT / "data" / "boundaries"
 
     # Automatic KPK flood monitoring (all values can be overridden in .env).
@@ -35,6 +39,9 @@ class Settings(BaseSettings):
     monitor_interval_hours: float = 12
     monitor_lock_minutes: float = 120      # a lock older than this is treated as abandoned
     alert_webhook_url: str | None = None   # optional: POST alerts as JSON {"text": ...} (Slack/Teams/etc.)
+    # Web app
+    admin_token: str | None = None         # if set, running analyses and saving data require this token
+    cron_secret: str | None = None         # Vercel Cron sends "Authorization: Bearer <CRON_SECRET>"
     model_config = SettingsConfigDict(env_file=ROOT / ".env", extra="ignore")
 
 settings = Settings()

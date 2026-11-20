@@ -788,3 +788,473 @@ ee.ee_exception.EEException: Image.multiply: If one image has no bands, the othe
 2026-11-20 09:48:13,616 INFO     -> Possible flood event (30s)
 2026-11-20 09:48:16,558 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2015-jul-aug__D_I_Khan.png
 2026-11-20 09:48:16,569 INFO [64/89] 2022-jun-aug · Tank ...
+2026-11-20 09:50:28,366 INFO     -> Detected flood event (132s)
+2026-11-20 09:50:31,623 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2022-jun-aug__Tank.png
+2026-11-20 09:50:31,642 INFO [65/89] 2022-jun-aug · Lakki Marwat ...
+2026-11-20 09:53:24,985 INFO     -> Rejected – not a flood (173s)
+2026-11-20 09:53:29,901 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2022-jun-aug__Lakki_Marwat.png
+2026-11-20 09:53:29,908 INFO [66/89] 2022-jun-aug · Charsadda ...
+2026-11-20 09:53:45,443 INFO     -> No flood signal detected (16s)
+2026-11-20 09:53:48,396 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2022-jun-aug__Charsadda.png
+2026-11-20 09:53:48,405 INFO [67/89] 2022-jun-aug · Peshawar ...
+2026-11-20 09:54:06,640 INFO     -> No flood signal detected (18s)
+2026-11-20 09:54:10,565 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2022-jun-aug__Peshawar.png
+2026-11-20 09:54:10,572 INFO [68/89] 2022-jun-aug · Swabi ...
+2026-11-20 09:55:48,669 INFO     -> Rejected – not a flood (98s)
+2026-11-20 09:55:51,548 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2022-jun-aug__Swabi.png
+2026-11-20 09:55:51,568 INFO [69/89] 2022-jun-aug · Swat ...
+2026-11-20 09:56:25,386 INFO     -> No flood signal detected (34s)
+2026-11-20 09:56:28,529 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2022-jun-aug__Swat.png
+2026-11-20 09:56:28,615 INFO [70/89] 2022-jun-aug · Shangla ...
+2026-11-20 09:56:57,581 INFO     -> No flood signal detected (29s)
+2026-11-20 09:57:01,443 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2022-jun-aug__Shangla.png
+2026-11-20 09:57:01,468 INFO [71/89] 2022-jun-aug · Upper Dir ...
+2026-11-20 09:57:26,392 INFO     -> No flood signal detected (25s)
+2026-11-20 09:57:29,678 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2022-jun-aug__Upper_Dir.png
+2026-11-20 09:57:29,707 INFO [72/89] 2022-jun-aug · Lower Dir ...
+2026-11-20 09:57:47,756 INFO     -> No flood signal detected (18s)
+2026-11-20 09:57:51,121 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2022-jun-aug__Lower_Dir.png
+2026-11-20 09:57:51,136 INFO [73/89] 2022-jun-aug · Nowshera ...
+2026-11-20 09:58:09,775 INFO     -> No flood signal detected (19s)
+2026-11-20 09:58:12,516 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2022-jun-aug__Nowshera.png
+2026-11-20 09:58:12,516 INFO [74/89] 2025-jun-sep · Buner ...
+2026-11-20 09:58:46,530 INFO     -> No flood signal detected (34s)
+2026-11-20 09:58:50,895 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2025-jun-sep__Buner.png
+2026-11-20 09:58:50,895 INFO [75/89] 2025-jun-sep · Swat ...
+2026-11-20 09:59:28,458 INFO     -> No flood signal detected (38s)
+2026-11-20 09:59:32,318 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2025-jun-sep__Swat.png
+2026-11-20 09:59:32,322 INFO [76/89] 2025-jun-sep · Shangla ...
+2026-11-20 10:00:10,298 INFO     -> No flood signal detected (38s)
+2026-11-20 10:00:16,141 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2025-jun-sep__Shangla.png
+2026-11-20 10:00:16,148 INFO [77/89] 2025-jun-sep · Mansehra ...
+2026-11-20 10:03:03,156 INFO     -> Possible flood event (167s)
+2026-11-20 10:03:05,817 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2025-jun-sep__Mansehra.png
+2026-11-20 10:03:05,831 INFO [78/89] 2025-jun-sep · Swabi ...
+2026-11-20 10:05:36,135 INFO     -> Detected flood event (150s)
+2026-11-20 10:05:38,832 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2025-jun-sep__Swabi.png
+2026-11-20 10:05:38,844 INFO [79/89] 2025-jun-sep · Bajaur ...
+2026-11-20 10:06:00,401 INFO     -> No flood signal detected (22s)
+2026-11-20 10:06:04,832 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2025-jun-sep__Bajaur.png
+2026-11-20 10:06:04,840 INFO [80/89] 2017 · Peshawar ...
+2026-11-20 10:06:45,765 INFO     -> No flood signal detected (41s)
+2026-11-20 10:06:50,911 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2017__Peshawar.png
+2026-11-20 10:06:50,911 INFO [81/89] 2017 · Charsadda ...
+2026-11-20 10:07:20,987 INFO     -> No flood signal detected (30s)
+2026-11-20 10:07:24,508 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2017__Charsadda.png
+2026-11-20 10:07:24,514 INFO [82/89] 2017 · Nowshera ...
+2026-11-20 10:08:58,892 INFO     -> Possible flood event (94s)
+2026-11-20 10:09:01,312 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2017__Nowshera.png
+2026-11-20 10:09:01,321 INFO [83/89] 2017 · Swat ...
+2026-11-20 10:10:25,499 INFO     -> No flood signal detected (84s)
+2026-11-20 10:10:28,959 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2017__Swat.png
+2026-11-20 10:10:28,970 INFO [84/89] 2017 · D. I. Khan ...
+2026-11-20 10:12:01,170 WARNING Verification failed for D. I. Khan: Image.gt: If one image has no bands, the other must also have no bands. Got 0 and 1.
+2026-11-20 10:13:45,729 INFO     -> Detected flood event (197s)
+2026-11-20 10:13:48,481 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2017__D_I_Khan.png
+2026-11-20 10:13:48,483 INFO [85/89] 2018 · Peshawar ...
+2026-11-20 10:15:07,251 INFO     -> Possible flood event (79s)
+2026-11-20 10:15:10,861 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2018__Peshawar.png
+2026-11-20 10:15:10,872 INFO [86/89] 2018 · Charsadda ...
+2026-11-20 10:16:17,148 INFO     -> Possible flood event (66s)
+2026-11-20 10:16:21,236 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2018__Charsadda.png
+2026-11-20 10:16:21,253 INFO [87/89] 2018 · Nowshera ...
+2026-11-20 10:17:57,195 INFO     -> Possible flood event (96s)
+2026-11-20 10:18:00,411 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2018__Nowshera.png
+2026-11-20 10:18:00,416 INFO [88/89] 2018 · Swat ...
+2026-11-20 10:19:12,933 INFO     -> No flood signal detected (73s)
+2026-11-20 10:19:17,500 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2018__Swat.png
+2026-11-20 10:19:17,513 INFO [89/89] 2018 · D. I. Khan ...
+2026-11-20 10:25:47,572 INFO     -> Possible flood event (390s)
+2026-11-20 10:25:50,661 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2018__D_I_Khan.png
+2026-11-20 10:26:45,681 INFO 89 event/district pairs
+2026-11-20 10:26:51,460 INFO [7/89] 2012-sep · Nowshera ...
+2026-11-20 10:27:00,078 WARNING Sleeping 1.85 seconds before retry 1 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:27:03,145 WARNING Sleeping 3.97 seconds before retry 2 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:27:07,727 WARNING Sleeping 2.42 seconds before retry 3 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:27:11,090 WARNING Sleeping 13.36 seconds before retry 4 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:27:25,538 WARNING Sleeping 22.88 seconds before retry 5 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:27:49,364 WARNING Sleeping 35.67 seconds before retry 6 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:28:25,487 WARNING Sleeping 22.06 seconds before retry 7 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:28:48,556 WARNING Sleeping 210.26 seconds before retry 8 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:32:19,390 ERROR Catalog analysis failed
+Traceback (most recent call last):
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 349, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\http.py", line 1018, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 429 when requesting https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json returned "Too many concurrent aggregations.". Details: "Too many concurrent aggregations.">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\ZarailensAI\src\flood_catalog.py", line 133, in analyze_catalog_event
+    else _analyze_landsat(event,district,geometry,cfg,project,progress))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\flood_catalog.py", line 99, in _analyze_landsat
+    series=optical_flood_time_series(geometry,middle,half,sensor,cloud_limit=60,project=project)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\satellite_retrieval.py", line 294, in optical_flood_time_series
+    raw=ee.FeatureCollection(event_images.map(measure)).getInfo().get('features',[])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\collection.py", line 588, in getInfo
+    return super().getInfo()
+           ^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\computedobject.py", line 107, in getInfo
+    return data.computeValue(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 1064, in computeValue
+    return _execute_cloud_call(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 351, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Too many concurrent aggregations.
+2026-11-20 10:32:19,425 INFO     -> Analysis failed (328s)
+2026-11-20 10:32:19,425 INFO     thumbnail: None
+2026-11-20 10:32:20,429 INFO [8/89] 2012-sep · Swat ...
+2026-11-20 10:32:24,136 WARNING Sleeping 0.39 seconds before retry 1 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:32:25,708 WARNING Sleeping 3.51 seconds before retry 2 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:32:29,730 WARNING Sleeping 0.98 seconds before retry 3 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:32:31,741 WARNING Sleeping 1.10 seconds before retry 4 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:32:33,471 WARNING Sleeping 5.57 seconds before retry 5 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:32:40,459 WARNING Sleeping 24.50 seconds before retry 6 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:33:05,588 WARNING Sleeping 47.10 seconds before retry 7 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:33:53,743 WARNING Sleeping 252.82 seconds before retry 8 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:38:09,296 ERROR Catalog analysis failed
+Traceback (most recent call last):
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 349, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\http.py", line 1018, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 429 when requesting https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json returned "Too many concurrent aggregations.". Details: "Too many concurrent aggregations.">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\ZarailensAI\src\flood_catalog.py", line 133, in analyze_catalog_event
+    else _analyze_landsat(event,district,geometry,cfg,project,progress))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\flood_catalog.py", line 99, in _analyze_landsat
+    series=optical_flood_time_series(geometry,middle,half,sensor,cloud_limit=60,project=project)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\satellite_retrieval.py", line 294, in optical_flood_time_series
+    raw=ee.FeatureCollection(event_images.map(measure)).getInfo().get('features',[])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\collection.py", line 588, in getInfo
+    return super().getInfo()
+           ^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\computedobject.py", line 107, in getInfo
+    return data.computeValue(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 1064, in computeValue
+    return _execute_cloud_call(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 351, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Too many concurrent aggregations.
+2026-11-20 10:38:09,338 INFO     -> Analysis failed (349s)
+2026-11-20 10:38:09,342 INFO     thumbnail: None
+2026-11-20 10:38:10,646 INFO [9/89] 2012-sep · D. I. Khan ...
+2026-11-20 10:38:14,411 WARNING Sleeping 1.04 seconds before retry 1 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:38:16,465 WARNING Sleeping 3.80 seconds before retry 2 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:38:21,398 WARNING Sleeping 6.76 seconds before retry 3 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:38:29,461 WARNING Sleeping 0.69 seconds before retry 4 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:38:31,292 WARNING Sleeping 18.08 seconds before retry 5 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:38:50,660 WARNING Sleeping 1.95 seconds before retry 6 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:38:53,657 WARNING Sleeping 106.96 seconds before retry 7 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:40:41,751 WARNING Sleeping 96.01 seconds before retry 8 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:42:18,686 ERROR Catalog analysis failed
+Traceback (most recent call last):
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 349, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\http.py", line 1018, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 429 when requesting https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json returned "Too many concurrent aggregations.". Details: "Too many concurrent aggregations.">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\ZarailensAI\src\flood_catalog.py", line 133, in analyze_catalog_event
+    else _analyze_landsat(event,district,geometry,cfg,project,progress))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\flood_catalog.py", line 99, in _analyze_landsat
+    series=optical_flood_time_series(geometry,middle,half,sensor,cloud_limit=60,project=project)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\satellite_retrieval.py", line 294, in optical_flood_time_series
+    raw=ee.FeatureCollection(event_images.map(measure)).getInfo().get('features',[])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\collection.py", line 588, in getInfo
+    return super().getInfo()
+           ^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\computedobject.py", line 107, in getInfo
+    return data.computeValue(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 1064, in computeValue
+    return _execute_cloud_call(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 351, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Too many concurrent aggregations.
+2026-11-20 10:42:18,724 INFO     -> Analysis failed (248s)
+2026-11-20 10:42:18,729 INFO     thumbnail: None
+2026-11-20 10:42:22,701 INFO [12/89] 2014-sep · Nowshera ...
+2026-11-20 10:42:25,367 WARNING Sleeping 1.41 seconds before retry 1 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:42:27,725 WARNING Sleeping 1.22 seconds before retry 2 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:42:29,473 WARNING Sleeping 1.73 seconds before retry 3 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:42:31,750 WARNING Sleeping 7.49 seconds before retry 4 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:42:39,862 WARNING Sleeping 0.65 seconds before retry 5 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:42:41,068 WARNING Sleeping 27.16 seconds before retry 6 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:43:09,282 WARNING Sleeping 68.09 seconds before retry 7 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:44:17,855 WARNING Sleeping 33.97 seconds before retry 8 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:44:52,317 ERROR Catalog analysis failed
+Traceback (most recent call last):
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 349, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\http.py", line 1018, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 429 when requesting https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json returned "Too many concurrent aggregations.". Details: "Too many concurrent aggregations.">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\ZarailensAI\src\flood_catalog.py", line 133, in analyze_catalog_event
+    else _analyze_landsat(event,district,geometry,cfg,project,progress))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\flood_catalog.py", line 99, in _analyze_landsat
+    series=optical_flood_time_series(geometry,middle,half,sensor,cloud_limit=60,project=project)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\satellite_retrieval.py", line 294, in optical_flood_time_series
+    raw=ee.FeatureCollection(event_images.map(measure)).getInfo().get('features',[])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\collection.py", line 588, in getInfo
+    return super().getInfo()
+           ^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\computedobject.py", line 107, in getInfo
+    return data.computeValue(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 1064, in computeValue
+    return _execute_cloud_call(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 351, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Too many concurrent aggregations.
+2026-11-20 10:44:52,335 INFO     -> Analysis failed (150s)
+2026-11-20 10:44:52,336 INFO     thumbnail: None
+2026-11-20 10:44:53,410 INFO [13/89] 2014-sep · Swat ...
+2026-11-20 10:44:56,347 WARNING Sleeping 0.58 seconds before retry 1 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:44:57,520 WARNING Sleeping 3.54 seconds before retry 2 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:45:01,562 WARNING Sleeping 7.94 seconds before retry 3 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:45:10,017 WARNING Sleeping 7.64 seconds before retry 4 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:45:18,110 WARNING Sleeping 22.83 seconds before retry 5 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:45:41,477 WARNING Sleeping 21.12 seconds before retry 6 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:46:03,100 WARNING Sleeping 3.64 seconds before retry 7 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:46:07,186 WARNING Sleeping 143.58 seconds before retry 8 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:48:31,364 ERROR Catalog analysis failed
+Traceback (most recent call last):
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 349, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\http.py", line 1018, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 429 when requesting https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json returned "Too many concurrent aggregations.". Details: "Too many concurrent aggregations.">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\ZarailensAI\src\flood_catalog.py", line 133, in analyze_catalog_event
+    else _analyze_landsat(event,district,geometry,cfg,project,progress))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\flood_catalog.py", line 99, in _analyze_landsat
+    series=optical_flood_time_series(geometry,middle,half,sensor,cloud_limit=60,project=project)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\satellite_retrieval.py", line 294, in optical_flood_time_series
+    raw=ee.FeatureCollection(event_images.map(measure)).getInfo().get('features',[])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\collection.py", line 588, in getInfo
+    return super().getInfo()
+           ^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\computedobject.py", line 107, in getInfo
+    return data.computeValue(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 1064, in computeValue
+    return _execute_cloud_call(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 351, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Too many concurrent aggregations.
+2026-11-20 10:48:31,388 INFO     -> Analysis failed (218s)
+2026-11-20 10:48:31,388 INFO     thumbnail: None
+2026-11-20 10:48:32,046 INFO [14/89] 2014-sep · D. I. Khan ...
+2026-11-20 10:48:34,754 WARNING Sleeping 0.09 seconds before retry 1 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:48:35,875 WARNING Sleeping 1.36 seconds before retry 2 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:48:37,779 WARNING Sleeping 6.81 seconds before retry 3 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:48:45,111 WARNING Sleeping 13.86 seconds before retry 4 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:49:00,047 WARNING Sleeping 4.88 seconds before retry 5 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:49:06,205 WARNING Sleeping 34.89 seconds before retry 6 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:49:42,211 WARNING Sleeping 18.98 seconds before retry 7 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:50:02,369 WARNING Sleeping 193.24 seconds before retry 8 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:53:16,566 ERROR Catalog analysis failed
+Traceback (most recent call last):
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 349, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    if positional_parameters_enforcement == POSITIONAL_EXCEPTION:
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\http.py", line 1018, in execute
+    data = _StreamSlice(
+googleapiclient.errors.HttpError: <HttpError 429 when requesting https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json returned "Too many concurrent aggregations.". Details: "Too many concurrent aggregations.">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\ZarailensAI\src\flood_catalog.py", line 133, in analyze_catalog_event
+    else _analyze_landsat(event,district,geometry,cfg,project,progress))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\flood_catalog.py", line 99, in _analyze_landsat
+    series=optical_flood_time_series(geometry,middle,half,sensor,cloud_limit=60,project=project)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\satellite_retrieval.py", line 294, in optical_flood_time_series
+    raw=ee.FeatureCollection(event_images.map(measure)).getInfo().get('features',[])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\collection.py", line 588, in getInfo
+    return super().getInfo()
+           ^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\computedobject.py", line 107, in getInfo
+    return data.computeValue(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 1064, in computeValue
+    return _execute_cloud_call(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 351, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Too many concurrent aggregations.
+2026-11-20 10:53:16,614 INFO     -> Analysis failed (285s)
+2026-11-20 10:53:16,618 INFO     thumbnail: None
+2026-11-20 10:53:20,991 INFO     thumbnail: None
+2026-11-20 10:53:22,146 INFO     thumbnail: None
+2026-11-20 10:53:23,567 INFO     thumbnail: None
+2026-11-20 10:53:24,662 INFO     thumbnail: None
+2026-11-20 10:53:25,841 INFO     thumbnail: None
+2026-11-20 10:53:27,165 INFO [23/89] 2014-15-chitral-glof · Chitral Lower ...
+2026-11-20 10:53:31,159 WARNING Sleeping 1.38 seconds before retry 1 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:53:33,512 WARNING Sleeping 1.57 seconds before retry 2 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:53:36,838 WARNING Sleeping 2.82 seconds before retry 3 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:53:42,174 WARNING Sleeping 10.04 seconds before retry 4 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:53:53,278 WARNING Sleeping 22.97 seconds before retry 5 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:54:18,515 WARNING Sleeping 24.52 seconds before retry 6 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:54:45,314 WARNING Sleeping 67.62 seconds before retry 7 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:55:54,562 WARNING Sleeping 66.82 seconds before retry 8 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:57:02,551 ERROR Catalog analysis failed
+Traceback (most recent call last):
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 349, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    if positional_parameters_enforcement == POSITIONAL_EXCEPTION:
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\http.py", line 1018, in execute
+    data = _StreamSlice(
+googleapiclient.errors.HttpError: <HttpError 429 when requesting https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json returned "Too many concurrent aggregations.". Details: "Too many concurrent aggregations.">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\ZarailensAI\src\flood_catalog.py", line 133, in analyze_catalog_event
+    else _analyze_landsat(event,district,geometry,cfg,project,progress))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\flood_catalog.py", line 99, in _analyze_landsat
+    series=optical_flood_time_series(geometry,middle,half,sensor,cloud_limit=60,project=project)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\satellite_retrieval.py", line 294, in optical_flood_time_series
+    raw=ee.FeatureCollection(event_images.map(measure)).getInfo().get('features',[])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\collection.py", line 588, in getInfo
+    return super().getInfo()
+           ^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\computedobject.py", line 107, in getInfo
+    return data.computeValue(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 1064, in computeValue
+    return _execute_cloud_call(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 351, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Too many concurrent aggregations.
+2026-11-20 10:57:02,567 INFO     -> Analysis failed (215s)
+2026-11-20 10:57:02,583 INFO     thumbnail: None
+2026-11-20 10:57:03,303 INFO [24/89] 2014-15-chitral-glof · Chitral Upper ...
+2026-11-20 10:57:08,737 WARNING Sleeping 1.80 seconds before retry 1 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:57:13,401 WARNING Sleeping 0.98 seconds before retry 2 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:57:15,462 WARNING Sleeping 3.94 seconds before retry 3 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:57:20,477 WARNING Sleeping 10.60 seconds before retry 4 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:57:32,870 WARNING Sleeping 24.80 seconds before retry 5 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:57:59,902 WARNING Sleeping 22.93 seconds before retry 6 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:58:24,114 WARNING Sleeping 40.08 seconds before retry 7 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 10:59:05,734 WARNING Sleeping 157.31 seconds before retry 8 of 8 for request: POST https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json, after 429
+2026-11-20 11:01:44,208 ERROR Catalog analysis failed
+Traceback (most recent call last):
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 349, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    if positional_parameters_enforcement == POSITIONAL_EXCEPTION:
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\http.py", line 1018, in execute
+    data = _StreamSlice(
+googleapiclient.errors.HttpError: <HttpError 429 when requesting https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json returned "Too many concurrent aggregations.". Details: "Too many concurrent aggregations.">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\ZarailensAI\src\flood_catalog.py", line 133, in analyze_catalog_event
+    else _analyze_landsat(event,district,geometry,cfg,project,progress))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\flood_catalog.py", line 99, in _analyze_landsat
+    series=optical_flood_time_series(geometry,middle,half,sensor,cloud_limit=60,project=project)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\satellite_retrieval.py", line 294, in optical_flood_time_series
+    raw=ee.FeatureCollection(event_images.map(measure)).getInfo().get('features',[])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\collection.py", line 588, in getInfo
+    return super().getInfo()
+           ^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\computedobject.py", line 107, in getInfo
+    return data.computeValue(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 1064, in computeValue
+    return _execute_cloud_call(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 351, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Too many concurrent aggregations.
+2026-11-20 11:01:44,238 INFO     -> Analysis failed (281s)
+2026-11-20 11:01:44,249 INFO     thumbnail: None
+2026-11-20 11:03:02,539 INFO 89 event/district pairs
+2026-11-20 11:03:08,143 INFO [7/89] 2012-sep · Nowshera ...

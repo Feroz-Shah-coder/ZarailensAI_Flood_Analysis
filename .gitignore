@@ -1,16 +1,14 @@
 # Secrets – never commit
 .env
-.streamlit/secrets.toml
 *service-account*.json
 # Local environment and caches
 .venv/
 __pycache__/
 .pytest_cache/
-outputs/zarailens.log
+outputs/*.log
+outputs/*.txt
 data/processed/cache/
 # Local analysis history (contains your own runs and field observations)
 data/analysis_history.sqlite3
-
-# Vercel build output
-web/dist/
+# Vercel CLI
 .vercel/

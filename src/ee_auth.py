@@ -1,11 +1,11 @@
 """Earth Engine initialization with actionable setup errors.
 
 Credentials are looked up in this order:
-1. ``EE_SERVICE_ACCOUNT_JSON`` (environment variable or Streamlit secret) – the
+1. ``EE_SERVICE_ACCOUNT_JSON`` (environment variable, e.g. Vercel project settings) – the
    full JSON key of a Google Cloud service account registered for Earth Engine.
-   Used by online deployments (Streamlit Community Cloud, Docker/Cloud Run …).
+   Used by online deployments (Vercel, Docker …).
 2. The local user login created by ``earthengine authenticate`` (desktop use).
-``EE_PROJECT`` may likewise come from the environment, ``.env`` or Streamlit secrets.
+``EE_PROJECT`` may likewise come from the environment or ``.env``.
 """
 import json
 import os
@@ -13,18 +13,15 @@ from functools import lru_cache
 from src.utils import EarthEngineError
 
 def _secret(name: str) -> str | None:
-    """Environment variable first, then Streamlit secrets (hosted deployments)."""
+    """Environment variable (Vercel project settings, .env locally)."""
     value=os.getenv(name)
     if value: return value
-    try:
-        import streamlit as st
-        if name in st.secrets:
-            secret=st.secrets[name]
-            # A TOML table is returned as a mapping; a quoted string as str.
-            return json.dumps(dict(secret)) if hasattr(secret,"keys") else str(secret)
+    try:   # local development: values from .env
+        from config.settings import ROOT
+        from dotenv import dotenv_values
+        return dotenv_values(ROOT/".env").get(name) or None
     except Exception:
-        pass
-    return None
+        return None
 
 def service_account_credentials(ee, key_json: str):
     """Build credentials from a downloaded service-account key (JSON text)."""

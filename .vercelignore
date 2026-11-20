@@ -1,8 +1,15 @@
-# Vercel only builds the static website in web/. The Python/Streamlit app runs on
-# Render or Streamlit Community Cloud. Hide every Python file so Vercel does not try
-# to run app.py as a serverless function (PYTHON_ENTRYPOINT_NOT_FOUND).
-*
-!web
-!web/**
-!vercel.json
-web/dist
+# Not needed inside the Vercel function (keeps the bundle small)
+.venv
+__pycache__
+.pytest_cache
+tests
+outputs
+scripts
+monitor_service.py
+Dockerfile
+.dockerignore
+data/analysis_history.sqlite3
+data/processed
+data/raw
+.env
+*.log

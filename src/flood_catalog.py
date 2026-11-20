@@ -36,8 +36,16 @@ def era_label(event: dict) -> str:
             else "Landsat optical archive (no Sentinel data before 2015)")
 
 def search_window(event: dict) -> tuple[date,date]:
-    """Reported period plus 12 days after it, so the first satellite pass after the event is included."""
-    return event["start_date"],event["end_date"]+timedelta(days=12)
+    """Reported period plus 12 days after it, so the first satellite pass after the event is included.
+
+    User-chosen windows (New Analysis) set ``pad_days`` = 0 and are searched exactly."""
+    return event["start_date"],event["end_date"]+timedelta(days=event.get("pad_days",12))
+
+def custom_event(district: str, start: date, end: date) -> dict:
+    """A user-chosen district/date window analysed exactly like a reported event."""
+    return {"id":f"custom-{district}-{start}-{end}".replace(" ","_"),"year":start.year,"period":f"{start} → {end}",
+            "event":"User-selected analysis window","areas":district,"districts":[district],"start":str(start),"end":str(end),
+            "start_date":start,"end_date":end,"pad_days":0,"era":"sentinel" if start>=SENTINEL_ERA_START else "landsat"}
 
 def landsat_sensor(day: date) -> str:
     if day<date(2011,11,1): return "Landsat 5 TM"
@@ -147,13 +155,19 @@ def headline(result: dict) -> dict:
 # Events reported only as "KPK" / "different parts of KPK" name no district. They are
 # measured over the main flood-prone river districts (Kabul, Swat and Indus plains).
 DEFAULT_DISTRICTS=["Peshawar","Charsadda","Nowshera","Swat","D. I. Khan"]
-THUMB_DIR=Path(__file__).resolve().parents[1]/"data"/"catalog_thumbs"
+THUMB_DIR=Path(__file__).resolve().parents[1]/"data"/"catalog_thumbs"      # shipped pictures (read-only on Vercel)
+def _writable_thumb_dir() -> Path:
+    from config.settings import WRITABLE, ON_VERCEL
+    return WRITABLE/"catalog_thumbs" if ON_VERCEL else THUMB_DIR
 
 def analysis_districts(event: dict) -> list[str]:
     return event["districts"] or DEFAULT_DISTRICTS
 
-def thumbnail_path(event_id: str, district: str) -> Path:
-    return THUMB_DIR/f"{event_id}__{district.replace(' ','_').replace('.','')}.png"
+def thumbnail_path(event_id: str, district: str, for_writing: bool = False) -> Path:
+    """Picture file for an event/district; a newly saved picture (writable dir) wins over the shipped one."""
+    name=f"{event_id}__{district.replace(' ','_').replace('.','')}.png"
+    fresh=_writable_thumb_dir()/name
+    return fresh if for_writing or fresh.exists() else THUMB_DIR/name
 
 def _thumbnail_image(result: dict, ee, project=None):
     """Real after-event picture with the measured underwater area drawn in blue."""
@@ -197,7 +211,7 @@ def save_thumbnail(result: dict, project=None) -> Path | None:
     bg=ee.Image(0).visualize(palette=["d9dedb"]).clip(region)  # grey = no clear pixel (cloud/gap)
     url=bg.blend(image.clip(region)).blend(outline).getThumbURL(
         {"region":region.bounds(),"dimensions":512,"format":"png"})
-    path=thumbnail_path(result["event_id"],result["district"]); path.parent.mkdir(parents=True,exist_ok=True)
+    path=thumbnail_path(result["event_id"],result["district"],for_writing=True); path.parent.mkdir(parents=True,exist_ok=True)
     with urllib.request.urlopen(url,timeout=120) as resp: path.write_bytes(resp.read())
     return path
 
@@ -208,21 +222,28 @@ def save_thumbnail(result: dict, project=None) -> Path | None:
 SEED_PATH=Path(__file__).resolve().parents[1]/"data"/"reference"/"catalog_results.json.gz"
 
 def export_seed(db_path=None, seed_path: Path = SEED_PATH) -> int:
+    """Write catalog results and the latest monitoring run to the deploy seed; returns catalog rows."""
     import gzip
     from src import analysis_history as store
     rows=list(store.catalog_analyses(path=db_path).values())
+    run=store.latest_monitoring_run(db_path)
     seed_path.parent.mkdir(parents=True,exist_ok=True)
-    with gzip.open(seed_path,"wt",encoding="utf-8") as f: json.dump(rows,f,default=str)
+    with gzip.open(seed_path,"wt",encoding="utf-8") as f:
+        json.dump({"catalog":rows,"monitoring_runs":[run] if run else []},f,default=str)
     return len(rows)
 
 def import_seed(db_path=None, seed_path: Path = SEED_PATH) -> int:
-    """Add seed results whose event/district is not in the database yet; returns rows added."""
+    """Add seed results whose event/district (or monitoring run) is not in the database yet; returns rows added."""
     import gzip
     from src import analysis_history as store
     if not seed_path.exists(): return 0
-    with gzip.open(seed_path,"rt",encoding="utf-8") as f: rows=json.load(f)
+    with gzip.open(seed_path,"rt",encoding="utf-8") as f: data=json.load(f)
+    if isinstance(data,list): data={"catalog":data,"monitoring_runs":[]}
     have=store.catalog_analyses(path=db_path); added=0
-    for r in rows:
+    for r in data.get("catalog",[]):
         if (r["event_id"],r["district"]) not in have:
             store.save_catalog_analysis(r,db_path); added+=1
+    if data.get("monitoring_runs") and not store.list_monitoring_runs(1,db_path):
+        for run in data["monitoring_runs"]:
+            run=dict(run); run.pop("run_id",None); store.save_monitoring_run(run,db_path); added+=1
     return added
