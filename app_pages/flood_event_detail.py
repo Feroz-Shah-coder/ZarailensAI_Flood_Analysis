@@ -11,7 +11,8 @@ from streamlit_folium import st_folium
 
 from config.settings import settings
 from src import analysis_history as store
-from src.flood_catalog import load_catalog, era_label, search_window, analyze_catalog_event, headline
+from src.flood_catalog import (load_catalog, era_label, search_window, analyze_catalog_event, headline, analysis_districts,
+                               thumbnail_path, save_thumbnail, DEFAULT_DISTRICTS)
 from src.flood_monitoring import event_tile_layers, monitoring_summary, kpk_district_geojson
 from src.map_visualization import framed_map
 from src.report_generator import pdf_report, excel_report
@@ -32,13 +33,51 @@ if event.get("note"): st.caption(event["note"])
 st.caption("Reported event from the user-provided list. All numbers below are measured from real Earth Engine imagery for the chosen district.")
 
 all_districts=sorted(f["properties"]["district"] for f in kpk_district_geojson(settings.boundaries_dir,settings.ee_project)["features"])
-options=event["districts"] or all_districts
+options=analysis_districts(event)
 cached=store.catalog_analyses(event["id"],settings.analysis_history_db)
+if not event["districts"]:
+    st.caption("The report names no district, so this event is measured over the main flood-prone river districts: "
+               +", ".join(DEFAULT_DISTRICTS)+". Any other district can be chosen below.")
+
+# ------------------------------------------------------------------ all districts overview
+st.markdown("#### All districts of this event")
+overview=[]
+for d in options:
+    r=cached.get((event["id"],d)); h=headline(r) if r else {}
+    overview.append({"District":d,"Satellite result":r.get("status") if r else "Not analysed yet",
+                     "Underwater (ha)":h.get("flood_ha"),"Flooded farmland (ha)":h.get("farmland_ha"),
+                     "Crop damage risk":h.get("risk"),"After image":h.get("after")})
+done=[o for o in overview if o["Underwater (ha)"] is not None]
+if done:
+    st.markdown('<div class="fi-kpi-grid">'+"".join(
+        f'<div class="fi-kpi {cls}"><div class="ic">{icon}</div><div><p class="lb">{label}</p><p class="vl">{value}</p><p class="nt">{note}</p></div></div>'
+        for cls,icon,label,value,note in [
+            ("k-blue","🌊","Total underwater area",f"{sum(o['Underwater (ha)'] for o in done):,.0f} ha",f"{len(done)} district(s) measured"),
+            ("k-green","🌱","Total flooded farmland",f"{sum(o['Flooded farmland (ha)'] for o in done):,.0f} ha","exposure, not loss"),
+            ("k-red","⚠️","Highest crop damage risk",next((lvl for lvl in ("High","Medium","Low") if any(o["Crop damage risk"]==lvl for o in done)),"—"),"preliminary · NDVI-based"),
+            ("k-violet","🛰️","Districts analysed",f"{sum(1 for d in options if (event['id'],d) in cached)}/{len(options)}","results saved")])+'</div>',unsafe_allow_html=True)
+st.dataframe(pd.DataFrame(overview),hide_index=True,width="stretch",
+             column_config={k:st.column_config.NumberColumn(format="%.0f") for k in ("Underwater (ha)","Flooded farmland (ha)")})
+pics=[d for d in options if thumbnail_path(event["id"],d).exists()]
+if pics:
+    st.caption("Real satellite pictures after the event (blue = measured underwater area; grey = cloud or no data). Click a district to see its full details.")
+    cols=st.columns(4)
+    for i,d in enumerate(pics):
+        with cols[i%4], st.container(border=True,key=f"dthumb_{i}"):
+            st.image(str(thumbnail_path(event["id"],d)),width="stretch")
+            if st.button(d,key=f"pick_{d}",width="stretch",icon=":material/zoom_in:"):
+                st.session_state[f"district_{event['id']}"]=d; st.rerun()
+
+st.markdown("#### District details")
 c1,c2=st.columns([2,1],vertical_alignment="bottom")
-district_choices=options+([d for d in all_districts if d not in options] if event["districts"] else [])
-first_done=next((i for i,d in enumerate(district_choices) if (event["id"],d) in cached),0)
-district=c1.selectbox("District",district_choices,index=first_done,
-                      format_func=lambda d:d+("  ✓ analysed" if (event["id"],d) in cached else ""),key=f"district_{event['id']}")
+district_choices=options+[d for d in all_districts if d not in options]
+sel_key=f"district_{event['id']}"
+if sel_key not in st.session_state:   # open on the district with the largest measured flood, else the first analysed one
+    ranked=sorted(done,key=lambda o:-o["Underwater (ha)"])
+    st.session_state[sel_key]=(ranked[0]["District"] if ranked else
+                              next((d for d in district_choices if (event["id"],d) in cached),district_choices[0]))
+district=c1.selectbox("District",district_choices,
+                      format_func=lambda d:d+("  ✓ analysed" if (event["id"],d) in cached else ""),key=sel_key)
 result=cached.get((event["id"],district))
 if c2.button("Re-run analysis" if result else "Analyse with real satellite data",type="primary",icon=":material/play_arrow:",width="stretch"):
     with st.status(f"Analysing {district} with real satellite data…",expanded=True) as status:
@@ -46,6 +85,8 @@ if c2.button("Re-run analysis" if result else "Analyse with real satellite data"
         result=analyze_catalog_event(event,district,settings,settings.ee_project,
                                      lambda f,t:(bar.progress(min(f,1.0)),note.caption(t)))
         store.save_catalog_analysis(result,settings.analysis_history_db)
+        try: save_thumbnail(result,settings.ee_project)
+        except Exception as exc: st.caption(f"Picture for the card list could not be saved: {exc}")
         status.update(label=f"{district}: {result.get('status')}",state="complete",expanded=False)
 if not result:
     st.info("This district has not been analysed for this event yet. Sentinel-era analyses take about 1–8 minutes; "

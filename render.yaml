@@ -1,0 +1,17 @@
+# Render Blueprint: runs the ZarailensAI Streamlit app (the Vercel site embeds this URL).
+# Render dashboard → New → Blueprint → pick this repo. Then set the two secret values.
+services:
+  - type: web
+    name: zarailensai-app
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free            # free instances sleep after ~15 min idle; first visit then takes ~1 min
+    healthCheckPath: /_stcore/health
+    autoDeploy: true
+    envVars:
+      - key: EE_PROJECT
+        sync: false       # your Google Cloud project id registered for Earth Engine
+      - key: EE_SERVICE_ACCOUNT_JSON
+        sync: false       # full JSON key of the Earth Engine service account (paste whole file)
+      - key: STREAMLIT_SERVER_ENABLE_CORS
+        value: "false"

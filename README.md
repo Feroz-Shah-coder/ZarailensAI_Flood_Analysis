@@ -147,3 +147,27 @@ Implement `BaseFloodDetector.detect(before, after, aoi, params) -> FloodResult`.
 - No images: broaden the date window, choose another date, or check project permissions.
 - No boundary / point result: draw a polygon; a point is never an AOI.
 - Local package installation: use Python 3.11/3.12 and install the pinned requirements in a clean environment.
+
+## Reported flood events 2010–2026
+
+Sidebar → **Flood Events 2010–2026** shows each reported KPK flood (list in
+`data/reference/kpk_flood_events.json`) as a card with a real satellite picture. Open a
+card for every district's underwater area, flooded farmland, crop damage risk, before/after
+images, acquisition timeline and rainfall. Events reported only as "KPK" are measured over
+Peshawar, Charsadda, Nowshera, Swat and D. I. Khan.
+
+Pre-compute all events (resumable; results go to the database, pictures to `data/catalog_thumbs/`):
+
+    python scripts/analyze_flood_catalog.py              # everything not yet analysed
+    python scripts/analyze_flood_catalog.py --event 2022-jun-aug
+    python scripts/analyze_flood_catalog.py --thumbs-only  # redraw card pictures
+
+Progress log: `outputs/catalog_batch.log`.
+
+## Deployment (Vercel)
+
+See **DEPLOYMENT.md**. Vercel hosts the public website (`web/`, `vercel.json`); the Streamlit
+app itself runs on Render (`render.yaml`, `Dockerfile`) or Streamlit Community Cloud, because
+Vercel's serverless functions cannot keep Streamlit's WebSocket connection or run multi-minute
+Earth Engine jobs. Before pushing, refresh the shipped event results:
+`python -c "from src.flood_catalog import export_seed; print(export_seed())"`.

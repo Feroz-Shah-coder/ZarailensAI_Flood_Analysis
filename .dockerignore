@@ -8,3 +8,6 @@ outputs/zarailens.log
 data/analysis_history.sqlite3
 data/processed/cache/
 tests/
+web/
+vercel.json
+render.yaml

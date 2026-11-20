@@ -169,3 +169,11 @@ def test_flood_catalog_loads_all_reported_events_with_valid_districts():
     first=catalog["events"][0]
     assert search_window(first)==(date(2010,7,25),date(2010,9,1))
     assert landsat_sensor(date(2010,8,1))=="Landsat 5 TM" and landsat_sensor(date(2013,8,1))=="Landsat 8 OLI"
+
+
+def test_catalog_events_without_named_district_use_default_river_districts():
+    from src.flood_catalog import load_catalog, analysis_districts, DEFAULT_DISTRICTS, thumbnail_path
+    events={e["id"]:e for e in load_catalog()["events"]}
+    assert analysis_districts(events["2013"])==DEFAULT_DISTRICTS
+    assert analysis_districts(events["2010-jul-aug"])==events["2010-jul-aug"]["districts"]
+    assert thumbnail_path("2022-jun-aug","D. I. Khan").name=="2022-jun-aug__D_I_Khan.png"

@@ -30,6 +30,10 @@ st.markdown("""<style>
 .fi-legend span{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:middle}
 .fi-legend div{font-size:.8rem;margin:.1rem 0}
 .fi-pill{margin-bottom:.3rem}
+.fi-thumb-empty{height:210px;border-radius:10px;background:#eef1ef;color:#5b6a63;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;font-size:.85rem;margin-bottom:.5rem}
+[class*="st-key-fcard_"] [data-testid="stImage"] img,[class*="st-key-dthumb_"] [data-testid="stImage"] img{height:210px;object-fit:contain;
+  background:#eef1ef;border-radius:10px}
 /* ---------- responsive layout ---------- */
 .fi-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin:.25rem 0 1rem}
 .fi-kpi-grid .fi-kpi{min-width:0}.fi-kpi .vl{overflow-wrap:anywhere}
@@ -66,6 +70,14 @@ for key,default in {"search_results":[],"selected_result":None,"aoi":None,"aoi_s
                     "analysis_summary":None,"monitoring_run":None,"dashboard_event":None,"dashboard_detail":None,
                     "dashboard_report":None,"historical_search":None,"prefill_district":None,"crop_assessment":None}.items():
     if key not in st.session_state: st.session_state[key]=default
+
+@st.cache_resource(show_spinner=False)
+def _load_seed() -> int:
+    """On a fresh deployment, import the shipped flood-event results once per server start."""
+    from src.flood_catalog import import_seed
+    try: return import_seed(settings.analysis_history_db)
+    except Exception: return 0
+_load_seed()
 
 page=st.navigation([
     st.Page("app_pages/dashboard.py",title="Dashboard",icon=":material/home:",default=True),

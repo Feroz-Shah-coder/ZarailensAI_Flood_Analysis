@@ -10,3 +10,7 @@ outputs/zarailens.log
 data/processed/cache/
 # Local analysis history (contains your own runs and field observations)
 data/analysis_history.sqlite3
+
+# Vercel build output
+web/dist/
+.vercel/

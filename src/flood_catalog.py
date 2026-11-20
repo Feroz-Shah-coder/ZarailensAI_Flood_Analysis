@@ -142,3 +142,87 @@ def headline(result: dict) -> dict:
         return {"flood_ha":d["flood_ha"],"farmland_ha":d["agricultural_flood_ha"],
                 "risk":overall_risk((d.get("crops") or {}).get("rows") or []),"after":d["after"]["date"]}
     return {}
+
+# ------------------------------------------------------------------ districts & pictures
+# Events reported only as "KPK" / "different parts of KPK" name no district. They are
+# measured over the main flood-prone river districts (Kabul, Swat and Indus plains).
+DEFAULT_DISTRICTS=["Peshawar","Charsadda","Nowshera","Swat","D. I. Khan"]
+THUMB_DIR=Path(__file__).resolve().parents[1]/"data"/"catalog_thumbs"
+
+def analysis_districts(event: dict) -> list[str]:
+    return event["districts"] or DEFAULT_DISTRICTS
+
+def thumbnail_path(event_id: str, district: str) -> Path:
+    return THUMB_DIR/f"{event_id}__{district.replace(' ','_').replace('.','')}.png"
+
+def _thumbnail_image(result: dict, ee, project=None):
+    """Real after-event picture with the measured underwater area drawn in blue."""
+    from src.satellite_retrieval import (s1_scene_image, s1_new_water, SensorCatalog, prepared_optical_image,
+                                         visualization_bands)
+    region=ee.Geometry(result["geometry"]); blue=lambda m:m.selfMask().visualize(palette=["2f7de1"],opacity=.85)
+    detail=result.get("detail"); landsat=result.get("landsat")
+    if detail:
+        parse=lambda s:{**s,"date":date.fromisoformat(str(s["date"]))}
+        after=parse(detail["after"]); before=parse(detail["before"])
+        baseline={**before,**detail.get("baseline",{}),"composite":"median"} if detail.get("baseline") else before
+        a=s1_scene_image(after,ee)
+        flood=s1_new_water(s1_scene_image(baseline,ee),a,ee,**detail["rule"])
+        base=a.select("VV").visualize(min=-25,max=0,palette=["000000","ffffff"])
+        return base.blend(blue(flood))
+    if landsat:
+        spec=next(s for s in SensorCatalog.optical_for_date(date.fromisoformat(landsat["after_date"])) if s.name==landsat["sensor"])
+        b=prepared_optical_image(landsat["baseline_ids"],spec,result["geometry"],project)
+        a=prepared_optical_image([landsat["after_id"]],spec,result["geometry"],project)
+        mb=b.normalizedDifference([spec.green,spec.swir1]); ma=a.normalizedDifference([spec.green,spec.swir1])
+        from src.satellite_retrieval import permanent_water_mask, terrain_mask
+        flood=ma.gt(0).And(mb.lte(0)).And(permanent_water_mask(ee).Not()).And(terrain_mask(ee,10))
+        base=a.visualize(bands=visualization_bands(spec),min=0,max=.3,gamma=1.3)
+        return base.blend(blue(flood))
+    # No flood measured: the real Sentinel-1 picture of the window (median), so the card still shows the place.
+    if result.get("era")!="sentinel" or not result.get("window"): return None
+    s,e=result["window"]
+    col=ee.ImageCollection("COPERNICUS/S1_GRD").filterBounds(region).filterDate(s,e).filter(
+        ee.Filter.eq("instrumentMode","IW")).filter(ee.Filter.listContains("transmitterReceiverPolarisation","VV")).select("VV")
+    return col.median().visualize(min=-25,max=0,palette=["000000","ffffff"])
+
+def save_thumbnail(result: dict, project=None) -> Path | None:
+    """Download a 512 px PNG (real Earth Engine thumbnail) for a cards list; None when no imagery."""
+    import urllib.request
+    from src.ee_auth import initialize
+    ee=initialize(project)
+    image=_thumbnail_image(result,ee,project)
+    if image is None: return None
+    region=ee.Geometry(result["geometry"])
+    outline=ee.Image().byte().paint(ee.FeatureCollection([ee.Feature(region)]),1,2).visualize(palette=["0f3d2e"])
+    bg=ee.Image(0).visualize(palette=["d9dedb"]).clip(region)  # grey = no clear pixel (cloud/gap)
+    url=bg.blend(image.clip(region)).blend(outline).getThumbURL(
+        {"region":region.bounds(),"dimensions":512,"format":"png"})
+    path=thumbnail_path(result["event_id"],result["district"]); path.parent.mkdir(parents=True,exist_ok=True)
+    with urllib.request.urlopen(url,timeout=120) as resp: path.write_bytes(resp.read())
+    return path
+
+# ------------------------------------------------------------------ deploy seed
+# The SQLite database is not committed (it holds local runs and field notes), so the
+# already computed event results are shipped as a gzip JSON seed. A fresh server
+# (Render, Streamlit Cloud, Docker) imports it on first start; nothing is recomputed.
+SEED_PATH=Path(__file__).resolve().parents[1]/"data"/"reference"/"catalog_results.json.gz"
+
+def export_seed(db_path=None, seed_path: Path = SEED_PATH) -> int:
+    import gzip
+    from src import analysis_history as store
+    rows=list(store.catalog_analyses(path=db_path).values())
+    seed_path.parent.mkdir(parents=True,exist_ok=True)
+    with gzip.open(seed_path,"wt",encoding="utf-8") as f: json.dump(rows,f,default=str)
+    return len(rows)
+
+def import_seed(db_path=None, seed_path: Path = SEED_PATH) -> int:
+    """Add seed results whose event/district is not in the database yet; returns rows added."""
+    import gzip
+    from src import analysis_history as store
+    if not seed_path.exists(): return 0
+    with gzip.open(seed_path,"rt",encoding="utf-8") as f: rows=json.load(f)
+    have=store.catalog_analyses(path=db_path); added=0
+    for r in rows:
+        if (r["event_id"],r["district"]) not in have:
+            store.save_catalog_analysis(r,db_path); added+=1
+    return added
