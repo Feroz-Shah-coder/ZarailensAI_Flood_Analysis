@@ -572,3 +572,219 @@ ee.ee_exception.EEException: Image.subtract: If one image has no bands, the othe
 2026-11-20 09:34:17,396 INFO     -> No flood signal detected (20s)
 2026-11-20 09:34:20,422 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2019-apr__Swat.png
 2026-11-20 09:34:20,432 INFO [37/89] 2019-apr · D. I. Khan ...
+2026-11-20 09:39:42,864 INFO     -> Rejected – not a flood (322s)
+2026-11-20 09:39:47,420 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2019-apr__D_I_Khan.png
+2026-11-20 09:39:47,422 INFO [38/89] 2021-sep-torghar · Tor Ghar ...
+2026-11-20 09:40:08,842 INFO     -> No flood signal detected (21s)
+2026-11-20 09:40:11,334 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2021-sep-torghar__Tor_Ghar.png
+2026-11-20 09:40:11,334 INFO [39/89] 2016-mar · Swat ...
+2026-11-20 09:40:21,117 INFO     -> No flood signal detected (10s)
+2026-11-20 09:40:23,480 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2016-mar__Swat.png
+2026-11-20 09:40:23,492 INFO [40/89] 2016-mar · Upper Dir ...
+2026-11-20 09:40:33,541 INFO     -> No flood signal detected (10s)
+2026-11-20 09:40:36,054 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2016-mar__Upper_Dir.png
+2026-11-20 09:40:36,060 INFO [41/89] 2016-mar · Lower Dir ...
+2026-11-20 09:40:43,868 INFO     -> No flood signal detected (8s)
+2026-11-20 09:40:46,299 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2016-mar__Lower_Dir.png
+2026-11-20 09:40:46,303 INFO [42/89] 2016-mar · Shangla ...
+2026-11-20 09:40:59,647 INFO     -> No flood signal detected (13s)
+2026-11-20 09:41:02,697 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2016-mar__Shangla.png
+2026-11-20 09:41:02,703 INFO [43/89] 2016-mar · Chitral Lower ...
+2026-11-20 09:41:17,859 INFO     -> No flood signal detected (15s)
+2026-11-20 09:41:21,675 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2016-mar__Chitral_Lower.png
+2026-11-20 09:41:21,685 INFO [44/89] 2016-mar · Chitral Upper ...
+2026-11-20 09:41:39,777 INFO     -> No flood signal detected (18s)
+2026-11-20 09:41:41,882 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2016-mar__Chitral_Upper.png
+2026-11-20 09:41:41,892 INFO [45/89] 2016-mar · Kohistan Upper ...
+2026-11-20 09:41:52,867 INFO     -> No flood signal detected (11s)
+2026-11-20 09:41:56,199 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2016-mar__Kohistan_Upper.png
+2026-11-20 09:41:56,213 INFO [46/89] 2016-mar · Batagram ...
+2026-11-20 09:42:07,850 INFO     -> No flood signal detected (12s)
+2026-11-20 09:42:10,020 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2016-mar__Batagram.png
+2026-11-20 09:42:10,058 INFO [47/89] 2016-mar · Mansehra ...
+2026-11-20 09:42:35,572 ERROR Catalog event analysis failed
+Traceback (most recent call last):
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 349, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\http.py", line 1018, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 400 when requesting https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json returned "Image.subtract: If one image has no bands, the other must also have no bands. Got 1 and 0.". Details: "Image.subtract: If one image has no bands, the other must also have no bands. Got 1 and 0.">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\ZarailensAI\src\flood_catalog.py", line 78, in _analyze_sentinel
+    result["detail"]=_jsonable(analyze_event(assessed,cfg,project))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\flood_monitoring.py", line 384, in analyze_event
+    crops=event_crop_assessment(flood_image,geometry,before['date'],after['date'],cfg.event_scale_m,project)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\agricultural_analysis.py", line 171, in event_crop_assessment
+    bestEffort=True,maxPixels=1e10,tileScale=8)).set('pre_count',pre_count).set('post_count',post_count).getInfo()
+                                                                                                         ^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\computedobject.py", line 107, in getInfo
+    return data.computeValue(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 1064, in computeValue
+    return _execute_cloud_call(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 351, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Image.subtract: If one image has no bands, the other must also have no bands. Got 1 and 0.
+2026-11-20 09:42:35,616 INFO     -> Possible flood event (26s)
+2026-11-20 09:42:38,099 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2016-mar__Mansehra.png
+2026-11-20 09:42:38,101 INFO [48/89] 2016-jul-ursun · Chitral Lower ...
+2026-11-20 09:42:49,054 INFO     -> No flood signal detected (11s)
+2026-11-20 09:42:52,370 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2016-jul-ursun__Chitral_Lower.png
+2026-11-20 09:42:52,371 INFO [49/89] 2019-jul-golen · Chitral Lower ...
+2026-11-20 09:43:19,218 INFO     -> No flood signal detected (27s)
+2026-11-20 09:43:22,290 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2019-jul-golen__Chitral_Lower.png
+2026-11-20 09:43:22,293 INFO [50/89] 2020-jul-golen · Chitral Lower ...
+2026-11-20 09:43:44,208 INFO     -> No flood signal detected (22s)
+2026-11-20 09:43:47,239 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2020-jul-golen__Chitral_Lower.png
+2026-11-20 09:43:47,250 INFO [51/89] 2020-aug · Swat ...
+2026-11-20 09:44:06,676 INFO     -> No flood signal detected (19s)
+2026-11-20 09:44:08,290 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2020-aug__Swat.png
+2026-11-20 09:44:08,290 INFO [52/89] 2020-aug · Shangla ...
+2026-11-20 09:44:26,442 INFO     -> No flood signal detected (18s)
+2026-11-20 09:44:29,255 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2020-aug__Shangla.png
+2026-11-20 09:44:29,273 INFO [53/89] 2020-aug · Kohistan Lower ...
+2026-11-20 09:44:47,354 INFO     -> No flood signal detected (18s)
+2026-11-20 09:44:49,887 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2020-aug__Kohistan_Lower.png
+2026-11-20 09:44:49,892 INFO [54/89] 2020-aug · Kohistan Upper ...
+2026-11-20 09:45:11,180 INFO     -> No flood signal detected (21s)
+2026-11-20 09:45:13,068 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2020-aug__Kohistan_Upper.png
+2026-11-20 09:45:13,073 INFO [55/89] 2020-aug · Kolai Palas Kohistan ...
+2026-11-20 09:45:29,721 INFO     -> No flood signal detected (17s)
+2026-11-20 09:45:31,870 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2020-aug__Kolai_Palas_Kohistan.png
+2026-11-20 09:45:31,880 INFO [56/89] 2023-jul-chitral · Chitral Upper ...
+2026-11-20 09:45:54,754 INFO     -> No flood signal detected (23s)
+2026-11-20 09:45:56,950 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2023-jul-chitral__Chitral_Upper.png
+2026-11-20 09:45:56,960 INFO [57/89] 2023-jul-chitral · Chitral Lower ...
+2026-11-20 09:46:19,510 INFO     -> No flood signal detected (23s)
+2026-11-20 09:46:22,124 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2023-jul-chitral__Chitral_Lower.png
+2026-11-20 09:46:22,124 INFO [58/89] 2015-jul-aug · Peshawar ...
+2026-11-20 09:46:34,209 INFO     -> No flood signal detected (12s)
+2026-11-20 09:46:37,369 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2015-jul-aug__Peshawar.png
+2026-11-20 09:46:37,377 INFO [59/89] 2015-jul-aug · Charsadda ...
+2026-11-20 09:46:45,195 INFO     -> No flood signal detected (8s)
+2026-11-20 09:46:48,547 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2015-jul-aug__Charsadda.png
+2026-11-20 09:46:48,551 INFO [60/89] 2015-jul-aug · Nowshera ...
+2026-11-20 09:47:02,124 WARNING Verification failed for Nowshera: Image.gt: If one image has no bands, the other must also have no bands. Got 0 and 1.
+2026-11-20 09:47:07,071 ERROR Catalog event analysis failed
+Traceback (most recent call last):
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 349, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\http.py", line 1018, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 400 when requesting https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json returned "Image.multiply: If one image has no bands, the other must also have no bands. Got 0 and 1.". Details: "Image.multiply: If one image has no bands, the other must also have no bands. Got 0 and 1.">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\ZarailensAI\src\flood_catalog.py", line 78, in _analyze_sentinel
+    result["detail"]=_jsonable(analyze_event(assessed,cfg,project))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\flood_monitoring.py", line 384, in analyze_event
+    crops=event_crop_assessment(flood_image,geometry,before['date'],after['date'],cfg.event_scale_m,project)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\agricultural_analysis.py", line 171, in event_crop_assessment
+    bestEffort=True,maxPixels=1e10,tileScale=8)).set('pre_count',pre_count).set('post_count',post_count).getInfo()
+                                                                                                         ^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\computedobject.py", line 107, in getInfo
+    return data.computeValue(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 1064, in computeValue
+    return _execute_cloud_call(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 351, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Image.multiply: If one image has no bands, the other must also have no bands. Got 0 and 1.
+2026-11-20 09:47:07,141 INFO     -> Possible flood event (19s)
+2026-11-20 09:47:09,433 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2015-jul-aug__Nowshera.png
+2026-11-20 09:47:09,440 INFO [61/89] 2015-jul-aug · Swat ...
+2026-11-20 09:47:28,106 WARNING Verification failed for Swat: Image.gt: If one image has no bands, the other must also have no bands. Got 0 and 1.
+2026-11-20 09:47:40,839 ERROR Catalog event analysis failed
+Traceback (most recent call last):
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 349, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\http.py", line 1018, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 400 when requesting https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json returned "Image.multiply: If one image has no bands, the other must also have no bands. Got 0 and 1.". Details: "Image.multiply: If one image has no bands, the other must also have no bands. Got 0 and 1.">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\ZarailensAI\src\flood_catalog.py", line 78, in _analyze_sentinel
+    result["detail"]=_jsonable(analyze_event(assessed,cfg,project))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\flood_monitoring.py", line 384, in analyze_event
+    crops=event_crop_assessment(flood_image,geometry,before['date'],after['date'],cfg.event_scale_m,project)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\agricultural_analysis.py", line 171, in event_crop_assessment
+    bestEffort=True,maxPixels=1e10,tileScale=8)).set('pre_count',pre_count).set('post_count',post_count).getInfo()
+                                                                                                         ^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\computedobject.py", line 107, in getInfo
+    return data.computeValue(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 1064, in computeValue
+    return _execute_cloud_call(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 351, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Image.multiply: If one image has no bands, the other must also have no bands. Got 0 and 1.
+2026-11-20 09:47:40,862 INFO     -> Possible flood event (31s)
+2026-11-20 09:47:43,124 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2015-jul-aug__Swat.png
+2026-11-20 09:47:43,134 INFO [62/89] 2015-jul-aug · D. I. Khan ...
+2026-11-20 09:48:13,593 ERROR Catalog event analysis failed
+Traceback (most recent call last):
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 349, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\googleapiclient\http.py", line 1018, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 400 when requesting https://earthengine.googleapis.com/v1/projects/zarailens-ai/value:compute?prettyPrint=false&alt=json returned "Image.multiply: If one image has no bands, the other must also have no bands. Got 0 and 1.". Details: "Image.multiply: If one image has no bands, the other must also have no bands. Got 0 and 1.">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\ZarailensAI\src\flood_catalog.py", line 78, in _analyze_sentinel
+    result["detail"]=_jsonable(analyze_event(assessed,cfg,project))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\flood_monitoring.py", line 384, in analyze_event
+    crops=event_crop_assessment(flood_image,geometry,before['date'],after['date'],cfg.event_scale_m,project)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\src\agricultural_analysis.py", line 171, in event_crop_assessment
+    bestEffort=True,maxPixels=1e10,tileScale=8)).set('pre_count',pre_count).set('post_count',post_count).getInfo()
+                                                                                                         ^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\computedobject.py", line 107, in getInfo
+    return data.computeValue(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 1064, in computeValue
+    return _execute_cloud_call(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "F:\ZarailensAI\.venv\Lib\site-packages\ee\data.py", line 351, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Image.multiply: If one image has no bands, the other must also have no bands. Got 0 and 1.
+2026-11-20 09:48:13,616 INFO     -> Possible flood event (30s)
+2026-11-20 09:48:16,558 INFO     thumbnail: F:\ZarailensAI\data\catalog_thumbs\2015-jul-aug__D_I_Khan.png
+2026-11-20 09:48:16,569 INFO [64/89] 2022-jun-aug · Tank ...

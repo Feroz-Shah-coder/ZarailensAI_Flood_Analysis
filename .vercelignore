@@ -1,13 +1,8 @@
-# Vercel only serves the static site in web/; the Python app runs on Render/Streamlit Cloud.
-.venv
-__pycache__
-outputs
-data
-tests
-src
-app_pages
-config
-scripts
-*.sqlite3
-.env
-.streamlit/secrets.toml
+# Vercel only builds the static website in web/. The Python/Streamlit app runs on
+# Render or Streamlit Community Cloud. Hide every Python file so Vercel does not try
+# to run app.py as a serverless function (PYTHON_ENTRYPOINT_NOT_FOUND).
+*
+!web
+!web/**
+!vercel.json
+web/dist

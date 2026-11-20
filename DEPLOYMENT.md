@@ -53,8 +53,12 @@ Render disk mounted at `/app/data/db` and set `ANALYSIS_HISTORY_DB=/app/data/db/
 
 ## 4. Website on Vercel
 
-1. https://vercel.com/new → import the same GitHub repo. Leave *Root Directory* as the repo root
-   (`vercel.json` sets the build: `node web/build.mjs` → `web/dist`, no Python on Vercel).
+1. https://vercel.com/new → import the same GitHub repo.
+   **Root Directory → `web`** (click *Edit* next to it). Framework Preset → *Other*.
+   This keeps `app.py` / `requirements.txt` out of Vercel's view; otherwise Vercel tries to run
+   the Streamlit app as a Python function and fails with `PYTHON_ENTRYPOINT_NOT_FOUND`.
+   (`web/vercel.json` sets the build `node build.mjs` → `dist`. If you leave the root as the repo
+   root, `.vercelignore` and the root `vercel.json` do the same job.)
 2. Settings → Environment Variables:
    * `ZARAILENS_APP_URL` = the app address from step 3 (e.g. `https://zarailensai-app.onrender.com`)
 3. Deploy. Your site is `https://<project>.vercel.app`; a custom domain can be added in Vercel.
